@@ -57,10 +57,10 @@ module RedCloth::Formatters::LATEX_EX
 		return '' if opts[:src] =~ /^\w+\:\/\//
 		# Resolve CSS styles if any have been set
 		styling = opts[:class].to_s.split(/\s+/).collect { |style| latex_image_styles[style] }.compact.join ','
-		# Build latex code
+		# Build latex code, and prefix the filename underscores with backslash
 		[ "\\begin{figure}[#{(opts[:align].nil? ? 'H' : 'htb')}]",
 		  "  \\centering",
-		  "  \\lwincludegraphics[#{styling}]{#{opts[:src]}}",
+		  "  \\lwincludegraphics[#{styling}]{#{opts[:src].gsub(/[^\\]_/, '\_')}}",
 		 ("  \\caption{#{escape opts[:title]}}" if opts[:title]),
 		 ("  \\label{#{opts[:alt]}}" if opts[:alt]),
 		  "\\end{figure}",
