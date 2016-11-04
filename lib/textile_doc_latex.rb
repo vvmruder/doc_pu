@@ -103,7 +103,7 @@ module RedClothExtensionLatex
       minted_settings = %W(mathescape linenos numbersep=5pt frame=lines framesep=2mm tabsize=4 fontsize=\\footnotesize breaklines breakanywhere)
                             .join(',')
 			if lang == '{}'
-				lang = 'python'
+				lang = '{python}'
       end
       latex_code_text = [
           '<notextile>',
